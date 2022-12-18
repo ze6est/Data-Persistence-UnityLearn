@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +9,10 @@ public class Brick : MonoBehaviour
 
     void Start()
     {
-        var renderer = GetComponentInChildren<Renderer>();
+        Renderer renderer = GetComponentInChildren<Renderer>();
 
         MaterialPropertyBlock block = new MaterialPropertyBlock();
+
         switch (PointValue)
         {
             case 1 :
@@ -30,14 +28,14 @@ public class Brick : MonoBehaviour
                 block.SetColor("_BaseColor", Color.red);
                 break;
         }
+
         renderer.SetPropertyBlock(block);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        onDestroyed.Invoke(PointValue);
+        onDestroyed.Invoke(PointValue);        
         
-        //slight delay to be sure the ball have time to bounce
         Destroy(gameObject, 0.2f);
     }
 }

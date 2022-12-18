@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -9,7 +6,7 @@ public class Ball : MonoBehaviour
 
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody = GetComponent<Rigidbody>();        
     }
     
     private void OnCollisionExit(Collision other)

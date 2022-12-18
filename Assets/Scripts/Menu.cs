@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
     [Header("Button")]
     [SerializeField] private Button _start;
     [SerializeField] private Button _scoreTable;
+    [SerializeField] private Button _settings;
     [SerializeField] private Button _quit;
 
     private string _password = "RomanKopylov";
@@ -22,13 +23,15 @@ public class Menu : MonoBehaviour
     {
         _start.onClick.AddListener(OnStartButtonClick);
         _scoreTable.onClick.AddListener(OnScoreTableButtonClick);
+        _settings.onClick.AddListener(OnSettingsButtonClick);
         _quit.onClick.AddListener(OnQuitButtonClick);        
     }
 
     private void OnDisable()
     {
         _start.onClick.RemoveListener(OnStartButtonClick);
-        _scoreTable.onClick.AddListener(OnScoreTableButtonClick);
+        _scoreTable.onClick.RemoveListener(OnScoreTableButtonClick);
+        _settings.onClick.RemoveListener(OnSettingsButtonClick);
         _quit.onClick.RemoveListener(OnQuitButtonClick);        
     }
 
@@ -62,6 +65,11 @@ public class Menu : MonoBehaviour
     private void OnScoreTableButtonClick()
     {
         SceneManager.LoadScene(2);
+    }
+
+    private void OnSettingsButtonClick()
+    {
+        SceneManager.LoadScene(3);
     }
 
     private void OnQuitButtonClick()
